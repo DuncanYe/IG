@@ -1,0 +1,14 @@
+<h1>instagram</h1>
+
+<div class="container">
+  <div class="row">
+    目前有 <em><%= @pics.count %></em> 則發文<br>
+    <% @pics.each do |p| %>
+    Title: <%= p.title %><br>
+    Description: <%= p.description %>
+    <% end %>
+
+    <hr>
+    <%= link_to 'Make Pic', new_pic_path %>
+  </div>
+</div>
