@@ -1,14 +1,15 @@
-<h1>instagram</h1>
 
 <div class="container">
   <div class="row">
-    目前有 <em><%= @pics.count %></em> 則發文<br>
+   <h1 class="text-center">instagram | <%= link_to 'Make IG', new_pic_path %></h1>
+    目前有 <em><%= @pics.count %></em> 則發文
+    <hr>
     <% @pics.each do |p| %>
-    Title: <%= p.title %><br>
-    Description: <%= p.description %>
+    <h3><%= link_to p.title, pic_path(p) %></h3><br>
+    <%= link_to 'Trash it', pic_path(p), method: :delete, data: {confirm: "Are you sure?"} %>
     <% end %>
 
     <hr>
-    <%= link_to 'Make Pic', new_pic_path %>
+    
   </div>
 </div>

@@ -1,9 +1,32 @@
-<%= form_for pic do |f| %>
+<div class="container">
+  <div class="row col-xs-6">
 
-<%= f.text_field :title %>
+    <% if pic.errors.any? %>
+      <ul>
+        <% pic.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
-<%= f.text_area :description %>
+    <!-- 在外層加了form標籤，無法傳送資料？ -->
+      <%= form_for pic do |f| %>
+        <div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
 
-<%= f.submit%>
+        <div class="form-group">
+          <%= f.label :descriotion %>
+          <%= f.text_area :description, class: 'form-control' %>
+        </div>
 
-<% end %>
+        <div class="form-group">
+          <%= f.submit class: 'btn btn-primary' %>
+          <%= f.button 'Cancel', type: :reset, class: 'btn btn-default' %>
+        </div>
+      <% end %>
+    
+
+  </div>
+</div>

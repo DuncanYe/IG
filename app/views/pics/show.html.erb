@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <h1>Show page</h1>
+
+    <%= @pic.title %><br>
+    <%= @pic.description %><br>
+    <%= link_to 'Fix it', edit_pic_path(@pic) %>
+    
+
+    <br>
+    <%=link_to 'Back to Ig', pics_path %>
+  </div>
+</div>
