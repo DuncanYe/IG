@@ -4,6 +4,7 @@
 
     <%= @pic.title %><br>
     <%= @pic.description %><br>
+    Pic by <%= @pic.user.email %><br>
     <%= link_to 'Fix it', edit_pic_path(@pic) %>
     
 
