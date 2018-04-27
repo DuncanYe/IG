@@ -3,11 +3,12 @@
 
     <% if pic.errors.any? %>
       <ul>
-        <% pic.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <% pic.errors.full_messages.each do |messages| %>
+        <li><%= messages %></li>
         <% end %>
       </ul>
     <% end %>
+    <!-- 進入new會直接顯示訊息 -->
 
     <!-- 在外層加了form標籤，無法傳送資料？ -->
       <%= form_for pic do |f| %>
@@ -18,7 +19,7 @@
 
         <div class="form-group">
           <%= f.label :descriotion %>
-          <%= f.text_area :description, class: 'form-control' %>
+          <%= f.text_area :description, class: 'form-control description' %>
         </div>
 
         <div class="form-group">
