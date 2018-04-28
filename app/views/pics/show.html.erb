@@ -16,10 +16,20 @@
             <div class="col-md-6">
               Gram by <%= @pic.user.email %>
             </div>
+
             <div class="col-md-6">
-              <%= link_to 'Fix it', edit_pic_path(@pic), class: 'btn btn-default pull-right' %>
-              <%= link_to 'Delete', pic_path(@pic), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger pull-right' %>
+              <div class="ntn-group pull-right">
+                <%= link_to like_pic_path(@pic), method: :put , class: 'btn btn-default' do %>
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                <%= @pic.get_upvotes.size %>
+                <% end %>
+              <% if user_signed_in? %>
+                <%= link_to 'Fix it', edit_pic_path(@pic), class: 'btn btn-info' %>
+                <%= link_to 'Delete', pic_path(@pic), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+              <% end %>  
+              </div>
             </div>
+
           </div>
         </div>
       

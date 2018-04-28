@@ -1,4 +1,5 @@
 class Pic < ApplicationRecord
+  acts_as_votable
   validates_presence_of :title, :description
 
   belongs_to :user
