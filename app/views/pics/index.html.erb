@@ -6,7 +6,9 @@
     <hr>
     <% @pics.each do |p| %>
     <h3><%= link_to p.title, pic_path(p) %></h3><br>
-    <%= link_to 'Trash it', pic_path(p), method: :delete, data: {confirm: "Are you sure?"} %>
+    <%= link_to (image_tag p.image.url(:medium)), p %><br>
+    <%= link_to 'Trash it', pic_path(p), class: 'pull-right', method: :delete, data: {confirm: "Are you sure?"} %>
+    <hr>
     <% end %>
 
     <hr>

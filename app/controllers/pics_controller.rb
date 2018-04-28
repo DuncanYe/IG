@@ -7,11 +7,11 @@ class PicsController < ApplicationController
   end
 
   def new
-    @pic = current_user.pics.create
+    @pic = current_user.pics.build
   end
 
   def create
-    @pic = current_user.pics.create(pic_params)
+    @pic = current_user.pics.build(pic_params)
     if @pic.save
       flash[:notice] = "pic was created"
        redirect_to @pic
@@ -43,7 +43,7 @@ class PicsController < ApplicationController
   private
 
   def pic_params
-    params.require(:pic).permit(:title, :description)
+    params.require(:pic).permit(:title, :description, :image)
   end
 
   def find_pic
