@@ -4,7 +4,7 @@
 
       <div class="panel panel-default">
         <div class="panel-heading">
-          <%= @pic.image.url %>
+          <%= image_tag @pic.image.url(:medium) %>
         </div>
         <div class="panel-body">
           <h1><%= @pic.title %></h1>
