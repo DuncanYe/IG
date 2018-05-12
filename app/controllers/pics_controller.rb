@@ -1,17 +1,17 @@
 class PicsController < ApplicationController
-
-  before_action :find_pic, only: [:show, :edit, :update, :destroy]
+  before_action :find_pic, only: [:show, :edit, :update, :destroy, :upvote]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @pics = Pic.order(created_at: :desc)
   end
 
   def new
-    @pic = current_user.pics.create
+    @pic = current_user.pics.build
   end
 
   def create
-    @pic = current_user.pics.create(pic_params)
+    @pic = current_user.pics.build(pic_params)
     if @pic.save
       flash[:notice] = "pic was created"
        redirect_to @pic
@@ -40,10 +40,15 @@ class PicsController < ApplicationController
     redirect_to pics_path
   end
 
+  def upvote
+    @pic.upvote_by current_user
+    redirect_to @pic
+  end
+
   private
 
   def pic_params
-    params.require(:pic).permit(:title, :description)
+    params.require(:pic).permit(:title, :description, :image)
   end
 
   def find_pic

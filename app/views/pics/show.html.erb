@@ -1,14 +1,39 @@
 <div class="container">
   <div class="row">
-    <h1>Show page</h1>
+    <div class="col-md-6 col-md-offset-3">
 
-    <%= @pic.title %><br>
-    <%= @pic.description %><br>
-    Pic by <%= @pic.user.email %><br>
-    <%= link_to 'Fix it', edit_pic_path(@pic) %>
-    
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= image_tag @pic.image.url(:medium) %>
+        </div>
+        <div class="panel-body">
+          <h1><%= @pic.title %></h1>
+          <p><%= @pic.description %></p>
+        </div>
 
-    <br>
-    <%=link_to 'Back to Ig', pics_path %>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-md-6">
+              Gram by <%= @pic.user.email %>
+            </div>
+
+            <div class="col-md-6">
+              <div class="ntn-group pull-right">
+                <%= link_to like_pic_path(@pic), method: :put , class: 'btn btn-default' do %>
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                <%= @pic.get_upvotes.size %>
+                <% end %>
+              <% if user_signed_in? %>
+                <%= link_to 'Fix it', edit_pic_path(@pic), class: 'btn btn-info' %>
+                <%= link_to 'Delete', pic_path(@pic), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+              <% end %>  
+              </div>
+            </div>
+
+          </div>
+        </div>
+      
+      </div>
+    </div>
   </div>
 </div>

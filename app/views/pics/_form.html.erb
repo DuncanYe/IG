@@ -13,6 +13,11 @@
     <!-- 在外層加了form標籤，無法傳送資料？ -->
       <%= form_for pic do |f| %>
         <div class="form-group">
+          <%= f.label :image %>
+          <%= f.file_field :image, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
           <%= f.label :title %>
           <%= f.text_field :title, class: 'form-control' %>
         </div>

@@ -1,2 +1,10 @@
-<h1>Fix pic</h1>
-<%= render partial: 'form', locals: { pic: @pic } %>
+<div class="container">
+  <div class="row">
+    <h1>Fix pic</h1>
+    <div class="current image">
+      <strong>Right Now</strong> 
+      <%= image_tag @pic.image.url(:medium) %>
+    </div>
+    <%= render partial: 'form', locals: { pic: @pic } %>
+  </div>
+</div>

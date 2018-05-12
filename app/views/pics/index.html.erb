@@ -1,15 +1,16 @@
-
 <div class="container">
   <div class="row">
-   <h1 class="text-center">instagram | <%= link_to 'Make IG', new_pic_path %></h1>
-    目前有 <em><%= @pics.count %></em> 則發文
-    <hr>
-    <% @pics.each do |p| %>
-    <h3><%= link_to p.title, pic_path(p) %></h3><br>
-    <%= link_to 'Trash it', pic_path(p), method: :delete, data: {confirm: "Are you sure?"} %>
-    <% end %>
-
-    <hr>
-    
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        
+        目前共有 <em><%= @pics.count %></em> 則發文
+        <hr>
+        <% @pics.each do |p| %>
+        <h3><%= link_to p.title, pic_path(p) %></h3><br>
+        <%= link_to (image_tag p.image.url(:medium)), p %><br>
+        <hr>
+        <% end %>    
+      </div>
+    </div>
   </div>
 </div>
